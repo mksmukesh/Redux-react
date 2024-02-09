@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+
+// import Style from "./Style";
+
+ export const GlobalInfo=createContext();
 
 function App() {
+
+  const getPizza=(pizza)=>{
+    console.log(pizza)
+  }
+
+  const [color]=useState('red')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <GlobalInfo.Provider value={{appColor:color,getData:getPizza}}>
+    <div>
+      <h1>App COmponent</h1>
+      <Header />
+      <Footer/>
+      
     </div>
+    </GlobalInfo.Provider>
   );
 }
 
